@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    
+    }
+
+    input, select, button {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 150;
+      
+    }
+
+    .gender-options {
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      background-color: #90ee90;
+      border: none;
+      cursor: pointer;
+     
+    }
+
+    button:hover {
+      background-color: #70d170;
+    }
+
+   .me{
+    background-origin: padding-box;
+   }
+
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .okok{
+      background-color: #90ee90;
+      border: none;
+      cursor: pointer;
+      width: 450px;
+    }
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>STUDENT FORM</h2>
+    <form id="studentForm">
+      <table border="1">
+     <tr>
+      <td> <label>Name</label></td> 
+      <td><input type="text" id="name" required /></td>
+     </tr>
+      <tr>
+        <td><label>Age</label></td>
+        <td><input type="number" id="age" required /></td>
+    </tr>
+
+     <tr>
+      <td><label>Course</label></td>
+      <td class="me"><select id="course">
+        <option>Select Option</option>
+        <option>PYTHON</option>
+        <option>JavaScript</option>
+        <option>Java</option>
+        <option>C++</option>
+      </select>
+      </td>
+
+    </tr>
+
+      <tr>
+    <td>
+      <label>Gender</label></td>
+      <td><div class="gender-options">
+        <label><input type="radio" name="gender" value="Male" checked /> Male</label>
+        <label><input type="radio" name="gender" value="Female" /> Female</label>
+      </td>
+      </div>
+      </tr>
+<tr>
+     <td> <label>Email</label></td>
+     <td><input type="email" id="email" required /></td>
+    </tr>
+    <tr>
+      <td colspan="2" ><button class="okok" type="submit">Save</button></td>
+    </form>
+  </tr>
+  </table>
+
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>AGE</th>
+          <th>COURSE</th>
+          <th>GENDER</th>
+          <th>EMAIL</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows go here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById("studentForm");
+    const tableBody = document.querySelector("#studentTable tbody");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const course = document.getElementById("course").value;
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const email = document.getElementById("email").value;
+
+      const newRow = tableBody.insertRow();
+
+      newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${age}</td>
+        <td>${course}</td>
+        <td>${gender}</td>
+        <td>${email}</td>
+        <td><button class="delete-btn">Delete</button></td>
+      `;
+
+      form.reset();
+    });
+
+    tableBody.addEventListener("click", function (e) {
+      if (e.target.classList.contains("delete-btn")) {
+        const row = e.target.closest("tr");
+        row.remove();
+      }
+    });
+  </script>
+</body>
+</html>
