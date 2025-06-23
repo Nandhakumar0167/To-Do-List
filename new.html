@@ -5,101 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Student Form</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 20px;
-    }
+   body {
+  font-family: Arial, sans-serif;
+  background-color: #4b1e1e;
+  margin: 20px;
+}
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-    }
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 10px;
 
-    h2 {
-      text-align: center;
-    }
+}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    
-    }
+h2 {
+  text-align: center;
+}
 
-    input, select, button {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      width: 150;
-      
-    }
+form {
+  margin-bottom: 20px;
+}
 
-    .gender-options {
-      display: flex;
-      gap: 15px;
-    }
+input, select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  
+  box-sizing: border-box;
+  
+}
 
-    button {
-      background-color: #90ee90;
-      border: none;
-      cursor: pointer;
-     
-    }
+.gender-options {
+  display: flex;
+  gap: 15px;
+}
 
-    button:hover {
-      background-color: #70d170;
-    }
+.okok {
+  background-color: #90ee90;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+}
 
-   .me{
-    background-origin: padding-box;
-   }
+.okok:hover {
+  background-color: #70d170;
+}
 
-    th, td {
-      border: 1px solid #aaa;
-      padding: 8px;
-      text-align: center;
-    }
+th, td {
+  border: 1px solid #aaa;
+  padding: 8px;
+  text-align: center;
+}
 
-    .okok{
-      background-color: #90ee90;
-      border: none;
-      cursor: pointer;
-      width: 450px;
-    }
-    .delete-btn {
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 
-    .delete-btn:hover {
-      background-color: darkred;
-    }
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+/* ✅ Tablet & Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 14px;
+    gap: 20px;
+  
+  }
+
+  input, select, .okok {
+    font-size: 14px;
+    width: 100px;
+  }
+
+  .gender-options {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  form table, form td, form input, form select {
+    width: 100%;
+    display: block;
+  }
+
+  form td {
+    margin-bottom: 10px;
+  }
+
+  .okok {
+    width: 100%;
+  }
+
+  .siz{
+    border-radius: 3px black;
+    padding: 30px;
+  }
+}
+
   </style>
 </head>
 <body>
   <div class="container">
     <h2>STUDENT FORM</h2>
-    <form id="studentForm">
-      <table border="1">
+    <form id="studentForm"  class="siz">
+        <center>
+      <table border="2" >
      <tr>
       <td> <label>Name</label></td> 
-      <td><input type="text" id="name" required /></td>
+      <td><input type="text" id="name" required style="width: 300px;"/></td>
      </tr>
       <tr>
         <td><label>Age</label></td>
-        <td><input type="number" id="age" required /></td>
-    </tr>
+        <td><input type="number" id="age" required style="width: 300px;" /></td>
+    
+      </tr>
 
      <tr>
       <td><label>Course</label></td>
-      <td class="me"><select id="course">
+      <td class="me"><select id="course" style="width: 300px;">
         <option>Select Option</option>
         <option>PYTHON</option>
         <option>JavaScript</option>
@@ -113,7 +150,7 @@
       <tr>
     <td>
       <label>Gender</label></td>
-      <td><div class="gender-options">
+      <td><div class="gender-options" style="width: 300px;">
         <label><input type="radio" name="gender" value="Male" checked /> Male</label>
         <label><input type="radio" name="gender" value="Female" /> Female</label>
       </td>
@@ -121,15 +158,15 @@
       </tr>
 <tr>
      <td> <label>Email</label></td>
-     <td><input type="email" id="email" required /></td>
+     <td><input type="email" id="email" required style="width: 300px;" /></td>
     </tr>
     <tr>
       <td colspan="2" ><button class="okok" type="submit">Save</button></td>
     </form>
   </tr>
   </table>
-
-    <table id="studentTable">
+    
+    <table id="studentTable" border="2">
       <thead>
         <tr>
           <th>NAME</th>
@@ -144,6 +181,7 @@
         <!-- Dynamic rows go here -->
       </tbody>
     </table>
+    </center>
   </div>
 
   <script>
